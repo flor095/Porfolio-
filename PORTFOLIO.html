@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Florencia — Portfolio Creativo & E‑commerce</title>
+  <meta name="description" content="Portfolio creativo y elegante de Florencia: flyers, catálogos, campañas multicanal, e‑commerce y comunicación persuasiva." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías elegantes y modernas -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Paleta suave y elegante */
+      --bg: #faf8f6;
+      --surface: #ffffff;
+      --primary: #2f3a3f;
+      --accent: #d9b3b0;       /* rosa pálido */
+      --mint: #bfe3d0;         /* verde menta suave */
+      --text: #3a3a3a;
+      --muted: #757575;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* Navegación superior */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #eee;
+    }
+    .nav {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+    }
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* Hero portada */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(185, 214, 200, 0.35), rgba(217, 179, 176, 0.35)),
+        url('https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      color: var(--primary);
+    }
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
+    }
+    .hero-inner {
+      position: relative;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 100px 24px 120px;
+      text-align: left;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      margin: 0 0 10px;
+      color: var(--primary);
+    }
+    .hero p.lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 0 24px;
+    }
+    .cta {
+      display: inline-flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #2b1d1d;
+      box-shadow: var(--shadow);
+    }
+    .btn-outline {
+      border: 2px solid var(--mint);
+      color: var(--primary);
+      background: transparent;
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    /* Secciones generales */
+    section {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 30px;
+      color: var(--primary);
+      margin: 0 0 8px;
+    }
+    section .sub {
+      color: var(--muted);
+      margin-bottom: 26px;
+      font-size: 15px;
+    }
+
+    /* Sobre mí */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+    .avatar {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .avatar img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Proyectos (galería) */
+    .grid {
+      display: grid;
+      gap: 22px;
+    }
+    .grid.projects {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .project {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .project img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .project .content {
+      padding: 18px 18px 20px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f3eeec;
+      color: #6a5553;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .project h3 {
+      margin: 6px 0 8px;
+      font-size: 18px;
+      color: var(--primary);
+    }
+    .project p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 12px;
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--primary);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* Habilidades */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .skill {
+      background: var(--surface);
+      border: 1px solid #eee;
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .skill b { color: var(--primary); }
+
+    /* Contacto */
+    .contact {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+    }
+    form {
+      background: var(--surface);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      background: #fff;
+      font: inherit;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    textarea { min-height: 140px; resize: vertical; }
+    .form-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .info {
+      background: var(--surface);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .info a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .info a:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer {
+      padding: 36px 24px 50px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .grid.projects { grid-template-columns: repeat(2, 1fr); }
+      .skills { grid-template-columns: repeat(2, 1fr); }
+      .contact { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .about { grid-template-columns: 1fr; }
+      nav { display: none; } /* simplificar en mobile; opcional: agregar menú hamburguesa */
+      .hero-inner { padding: 80px 20px 100px; }
+      .grid.projects { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegación -->
+  <header>
+    <div class="nav">
+      <div class="brand">Florencia — Creatividad & E‑commerce</div>
+      <nav aria-label="Principal">
+        <a href="[def]">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Portada Hero -->
+  <section class="hero" aria-label="Portada">
+    <div class="hero-inner">
+      <h1>Diseños que conectan emociones con resultados</h1>
+      <p class="lead">
+        Integrando elegancia tradicional y branding moderno, transformo ideas en experiencias visuales que impulsan campañas,
+        catálogos y e‑commerce con autenticidad y claridad.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn btn-outline" href="#contacto">Contactar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section id="sobre-mi" aria-labelledby="sobre-mi-title">
+    <h2 id="sobre-mi-title">Sobre mí</h2>
+    <p class="sub">Estilo fresco, elegante y emocional. Comunicación clara y resultados medibles.</p>
+
+    <div class="about">
+      <div class="card">
+        <p>
+          Soy una emprendedora creativa que combina estética atemporal con estrategias modernas de branding y e‑commerce.
+          Diseño flyers, catálogos y campañas que generan conexión emocional y mejoran conversión.
+        </p>
+        <p>
+          Me especializo en integrar WhatsApp, Instagram y email marketing, optimizando publicaciones en Mercado Libre y
+          Tienda Nube, con textos precisos y visuales consistentes en cada pieza.
+        </p>
+        <p>
+          Mi sello: empatía, prolijidad y foco en el cliente. Cada proyecto está pensado para comunicar con elegancia y
+          lograr impacto real.
+        </p>
+      </div>
+
+      <div class="avatar" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1519340241574-2ef8d7f4f7aa?q=80&w=1600&auto=format&fit=crop" alt="Retrato creativo estilo editorial" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos destacados -->
+  <section id="proyectos" aria-labelledby="proyectos-title">
+    <h2 id="proyectos-title">Proyectos destacados</h2>
+    <p class="sub">Selección de piezas con enfoque en estética, claridad y resultados.</p>
+
+    <div class="grid projects">
+      <!-- Proyecto 1 -->
+      <article class="project">
+        <img src="https://images.unsplash.com/photo-1516542076529-1ea3854896e1?q=80&w=1600&auto=format&fit=crop" alt="Flyer Primavera–Verano con paleta suave" />
+        <div class="content">
+          <span class="tag">Flyer</span>
+          <h3>Primavera–Verano — Línea femenina</h3>
+          <p>Diseño fresco y elegante con paleta suave, tipografía moderna y foco en la emoción visual.</p>
+          <div class="meta" aria-label="Resultados">
+            <span>↑ Interacción en Instagram</span>
+            <span>↑ Consultas por DM</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto 2 -->
+      <article class="project">
+        <img src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?q=80&w=1600&auto=format&fit=crop" alt="Catálogo digital minimalista para nueva colección" />
+        <div class="content">
+          <span class="tag">Catálogo</span>
+          <h3>Nueva colección — Catálogo digital</h3>
+          <p>Maquetación clara, fotografías limpias y descripciones precisas para mejorar conversión en e‑commerce.</p>
+          <div class="meta">
+            <span>↑ Conversión Tienda Nube</span>
+            <span>↑ Click‑through en email</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto 3 -->
+      <article class="project">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop" alt="Campaña multicanal integrada" />
+        <div class="content">
+          <span class="tag">Campaña</span>
+          <h3>Multicanal — WhatsApp, Instagram y email</h3>
+          <p>Mensajes persuasivos y visuales coherentes para aumentar alcance y fidelización.</p>
+          <div class="meta">
+            <span>↑ Alcance orgánico</span>
+            <span>↑ Fidelización</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto 4 -->
+      <article class="project">
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1600&auto=format&fit=crop" alt="Línea masculina con estética sobria" />
+        <div class="content">
+          <span class="tag">Flyer</span>
+          <h3>Línea masculina — Elegancia sobria</h3>
+          <p>Composición equilibrada, estética sobria y jerarquía tipográfica orientada a público adulto.</p>
+          <div class="meta">
+            <span>↑ Guardados en IG</span>
+            <span>↑ Trafico al catálogo</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto 5 -->
+      <article class="project">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop" alt="Optimización de publicaciones en Mercado Libre" />
+        <div class="content">
+          <span class="tag">E‑commerce</span>
+          <h3>Mercado Libre — Optimización de publicaciones</h3>
+          <p>Títulos, descripciones y fotografías alineadas para mejorar visibilidad y experiencia de compra.</p>
+          <div class="meta">
+            <span>↑ CTR</span>
+            <span>↓ Dudas en mensajería</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto 6 -->
+      <article class="project">
+        <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1600&auto=format&fit=crop" alt="Emailing elegante con foco en storytelling" />
+        <div class="content">
+          <span class="tag">Emailing</span>
+          <h3>Storytelling — Email de lanzamiento</h3>
+          <p>Copy empático, estructura clara y call‑to‑action definido para impulsar aperturas y clics.</p>
+          <div class="meta">
+            <span>↑ Open rate</span>
+            <span>↑ Clicks al catálogo</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Habilidades -->
+  <section id="habilidades" aria-labelledby="habilidades-title">
+    <h2 id="habilidades-title">Habilidades</h2>
+    <p class="sub">Herramientas y competencias clave aplicadas a branding y e‑commerce.</p>
+
+    <div class="skills">
+      <div class="skill"><b>Diseño:</b> Canva, Photoshop</div>
+      <div class="skill"><b>E‑commerce:</b> Mercado Libre, Tienda Nube</div>
+      <div class="skill"><b>Comunicación:</b> Mensajes persuasivos, atención al cliente</div>
+      <div class="skill"><b>Marketing:</b> Campañas en Instagram, WhatsApp y email</div>
+      <div class="skill"><b>Maquetación:</b> Catálogos y piezas visuales</div>
+      <div class="skill"><b>Coordinación:</b> Protocolos y trabajo en equipo</div>
+      <div class="skill"><b>Prompts:</b> Ingeniería para imágenes y video</div>
+      <div class="skill"><b>Análisis:</b> Enfoque en resultados y mejoras</div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" aria-labelledby="contacto-title">
+    <h2 id="contacto-title">Contacto</h2>
+    <p class="sub">Hablemos de tu próximo proyecto.</p>
+
+    <div class="contact">
+      <form action="#" method="post" aria-label="Formulario de contacto">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="tu@email.com" required />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Contame qué necesitás y tus objetivos"></textarea>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Enviar</button>
+          <a class="btn btn-outline" href="mailto:contacto@tudominio.com">Escribir por email</a>
+        </div>
+      </form>
+
+      <div class="info">
+        <p><b>Email:</b> <a href="mailto:contacto@tudominio.com">contacto@tudominio.com</a></p>
+        <p><b>WhatsApp:</b> <a href="https://wa.me/54911XXXXXXXX" target="_blank" rel="noopener">+54 9 11 XXX XXXX</a></p>
+        <p><b>Instagram:</b> <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener">@tuusuario</a></p>
+        <p><b>Descargar CV:</b> <a href="#" download>CV_Florencia.pdf</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © Florencia — Creatividad & E‑commerce · Estética fresca y resultados medibles
+  </footer>
+
+</body>
+</html>

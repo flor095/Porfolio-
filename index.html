@@ -1,82 +1,45 @@
-# Florencia — Portfolio Creativo & E‑commerce
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Florencia — Portfolio Creativo & E‑commerce</title>
+  <meta name="description" content="Portfolio creativo y elegante de Florencia: flyers, catálogos, campañas multicanal, e‑commerce y comunicación persuasiva." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías elegantes y modernas -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
 
-Maqueta y sitio estático para presentar trabajos de diseño, catálogos y campañas orientadas a e‑commerce.
+  <!-- Navegación -->
+  <header>
+    <div class="nav">
+      <div class="brand">Florencia — Creatividad & E‑commerce</div>
+      <nav aria-label="Principal">
+        <a href="[def]">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-- **Estado:** Maqueta / WIP
-- **Archivo principal:** [index.html](index.html)
-- **Maqueta original preservada:** [PORTFOLIO.html](PORTFOLIO.html)
-
-## Vista rápida (local)
-
-Desde la raíz del proyecto, ejecutá:
-
-```bash
-python3 -m http.server 8000
-# Abrir http://localhost:8000/index.html en tu navegador
-```
-
-## Estructura
-
-- `index.html` — Página principal (lista para deploy).
-- `PORTFOLIO.html` — Versión original de la maqueta (preservada).
-- `assets/styles.css` — CSS extraído.
-
-## Opciones de despliegue
-
-Netlify (rápido con CLI):
-
-```bash
-npm i -g netlify-cli
-netlify login
-netlify deploy --dir=. --prod
-```
-
-Vercel (fácil desde CLI):
-
-```bash
-npm i -g vercel
-vercel --prod
-```
-
-GitHub Pages (sin build): subí el repo a GitHub y en Settings → Pages habilitá la rama `main` y la carpeta `/ (root)`.
-
-Alternativa: arrastrá `index.html` al panel de Deploys de Netlify (drag & drop) para publicar sin CLI.
-
-## Personalizar
-
-- Reemplazá textos, imágenes y enlaces en `index.html`.
-- Para separar assets, colocá imágenes en `assets/` y ajustá rutas.
-
-## Próximos pasos sugeridos
-
-- Extraer imágenes a `assets/images/` y optimizarlas.
-- Añadir un `netlify.toml` o un `vercel.json` si querés configuraciones específicas.
-- Automatizar deploy desde GitHub (CI) — te puedo ayudar.
-
-## Contacto
-
-Si querés que prepare el deploy automático a Netlify o Vercel, confirmame cuál prefieres y lo configuro.
-
-## Deploy automático — GitHub Pages
-
-He añadido un workflow de GitHub Actions que publica los archivos estáticos en GitHub Pages cuando se hace push a `main`.
-
-- Archivo workflow: `.github/workflows/deploy-pages.yml`
-- URL prevista (después del primer deploy exitoso): https://flor095.github.io/Porfolio-/
-
-Pasos para activar el deploy:
-
-1. Commit y push de los cambios a `main`:
-
-```bash
-git add .
-git commit -m "Add GitHub Pages deploy workflow and static site"
-git push origin main
-```
-
-2. Esperá a que se ejecute la Action (Actions → Deploy) y, si todo va bien, la página estará disponible en la URL indicada.
-
-Si preferís que use Netlify/Vercel en su lugar, decime y lo configuro.
+  <!-- Portada Hero -->
+  <section class="hero" aria-label="Portada">
+    <div class="hero-inner">
+      <h1>Diseños que conectan emociones con resultados</h1>
+      <p class="lead">
+        Integrando elegancia tradicional y branding moderno, transformo ideas en experiencias visuales que impulsan campañas,
+        catálogos y e‑commerce con autenticidad y claridad.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn btn-outline" href="#contacto">Contactar</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Sobre mí -->
   <section id="sobre-mi" aria-labelledby="sobre-mi-title">
